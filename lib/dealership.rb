@@ -33,4 +33,13 @@ class Dealership
     details_hash["address"] = @address
     details_hash
   end
+
+  def average_price_of_car
+    format_number(total_value / inventory_count)
+  end
+
+  def format_number(number)
+    num_groups = number.to_s.chars.to_a.reverse.each_slice(3)
+    num_groups.map{|num_chunk| num_chunk.join}.join(',').reverse
+  end
 end
