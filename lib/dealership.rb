@@ -38,11 +38,6 @@ class Dealership
     format_number(total_value / inventory_count)
   end
 
-  def format_number(number)
-    num_groups = number.to_s.chars.to_a.reverse.each_slice(3)
-    num_groups.map{|num_chunk| num_chunk.join}.join(',').reverse
-  end
-
   def cars_sorted_by_price
     @inventory.sort_by{ |car| car.total_cost }
   end
@@ -53,5 +48,10 @@ class Dealership
       inventory_hash[car.make] = cars_by_make(car.make)
     end
     inventory_hash
+  end
+
+  def format_number(number)
+    num_groups = number.to_s.chars.to_a.reverse.each_slice(3)
+    num_groups.map{|num_chunk| num_chunk.join}.join(',').reverse
   end
 end
