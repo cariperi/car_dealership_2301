@@ -11,10 +11,6 @@ class Car
     @color = nil
   end
 
-  # def total_cost
-  #   @loan_length * @monthly_payment
-  # end
-
   def paint!(color)
     @color = color
   end
