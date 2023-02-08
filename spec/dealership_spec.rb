@@ -178,4 +178,24 @@ describe Car do
       expect(dealership.cars_sorted_by_price.first).to eq(car_3)
     end
   end
+
+  describe '#inventory_hash' do
+    it 'returns a hash of car makes and arrays of their respective cars in inventory' do
+      dealership = Dealership.new("Acme Auto", "123 Main Street")
+      car_1 = Car.new("Ford Mustang", 1500, 36)
+      car_2 = Car.new("Toyota Prius", 1000, 48)
+      car_3 = Car.new("Toyota Tercel", 500, 48)
+      car_4 = Car.new("Chevrolet Bronco", 1250, 24)
+      dealership.add_car(car_1)
+      dealership.add_car(car_2)
+      dealership.add_car(car_3)
+      dealership.add_car(car_4)
+
+      expect(dealership.inventory_hash).to be_a Hash
+      expect(dealership.inventory_hash.keys).to include("Ford", "Toyota", "Chevrolet")
+      expect(dealership.inventory_hash["Ford"].count).to eq(1)
+      expect(dealership.inventory_hash["Toyota"].count).to eq(2)
+      expect(dealership.inventory_hash["Chevrolet"]).to eq([car_4])
+    end
+  end
 end
