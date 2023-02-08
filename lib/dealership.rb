@@ -42,4 +42,8 @@ class Dealership
     num_groups = number.to_s.chars.to_a.reverse.each_slice(3)
     num_groups.map{|num_chunk| num_chunk.join}.join(',').reverse
   end
+
+  def cars_sorted_by_price
+    @inventory.sort_by{ |car| car.total_cost }
+  end
 end
