@@ -23,10 +23,29 @@ describe Car do
       expect(dealership.address).to eq("123 Main Street")
     end
 
-    it 'starts with no cars by default' do
+    it 'starts with no cars in inventory by default' do
       dealership = Dealership.new("Acme Auto", "123 Main Street")
 
-      expect(dealership.cars).to eq([])
+      expect(dealership.inventory).to eq([])
+    end
+  end
+
+  describe '#inventory_count' do
+    it 'returns the total number of cars in the inventory' do
+      dealership = Dealership.new("Acme Auto", "123 Main Street")
+
+      expect(dealership.inventory_count).to eq(0)
+    end
+  end
+
+  describe '#add_car' do
+    it 'adds a specified car to the cars inventory array' do
+      dealership = Dealership.new("Acme Auto", "123 Main Street")
+      car_1 = Car.new("Ford Mustang", 1500, 36)
+      dealership.add_car(car_1)
+
+      expect(dealership.inventory_count).to eq(1)
+      expect(dealership.inventory).to include(car_1)
     end
   end
 
@@ -57,17 +76,6 @@ describe Car do
       dealership.add_car(car_4)
 
       expect(dealership.has_inventory?).to be true
-    end
-  end
-
-  describe '#add_car' do
-    it 'adds a specified car to the cars inventory array' do
-      dealership = Dealership.new("Acme Auto", "123 Main Street")
-      car_1 = Car.new("Ford Mustang", 1500, 36)
-      dealership.add_car(car_1)
-
-      expect(dealership.cars.count).to eq(1)
-      expect(dealership.cars).to include(car_1)
     end
   end
 

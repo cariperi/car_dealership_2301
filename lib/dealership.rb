@@ -1,26 +1,30 @@
 class Dealership
-  attr_reader :name, :address, :cars
+  attr_reader :name, :address, :inventory
 
   def initialize(name, address)
     @name = name
     @address = address
-    @cars = []
+    @inventory = []
   end
 
-  def has_inventory?
-    @cars.count >= 1
+  def inventory_count
+    @inventory.count
   end
 
   def add_car(car)
-    @cars << car
+    @inventory << car
+  end
+
+  def has_inventory?
+    @inventory.count >= 1
   end
 
   def cars_by_make(make)
-    @cars.find_all { |car| car.make == make }
+    @inventory.find_all { |car| car.make == make }
   end
 
   def total_value
-    @cars.map { |car| car.total_cost }.sum
+    @inventory.map { |car| car.total_cost }.sum
   end
 
   def details
