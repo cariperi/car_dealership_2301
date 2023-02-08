@@ -50,4 +50,13 @@ RSpec.describe Car do
 
     expect(car.color).to eq(:blue)
   end
+
+  it 'returns an error and does not change color if color is not a symbol' do
+    car = Car.new("Ford Mustang", 1500, 36)
+    car.paint!(:blue)
+    car.paint!("test")
+
+    expect(car.color).to eq(:blue)
+    expect(car.paint!("blue")).to eq("Sorry! Please try again.")
+  end
 end

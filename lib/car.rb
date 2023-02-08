@@ -12,6 +12,7 @@ class Car
   end
 
   def paint!(color)
+    return "Sorry! Please try again." if color.class != Symbol
     @color = color
   end
 end
