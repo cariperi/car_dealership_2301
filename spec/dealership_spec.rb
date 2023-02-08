@@ -10,29 +10,24 @@ describe Car do
 
   describe '#initialize' do
     it 'exists' do
-
       expect(@dealership).to be_a Dealership
     end
 
     it 'has a name' do
-
       expect(@dealership.name).to eq("Acme Auto")
     end
 
     it 'has an address' do
-
       expect(@dealership.address).to eq("123 Main Street")
     end
 
     it 'starts with no cars in inventory by default' do
-
       expect(@dealership.inventory).to eq([])
     end
   end
 
   describe '#inventory_count' do
     it 'returns the total number of cars in the inventory' do
-
       expect(@dealership.inventory_count).to eq(0)
     end
   end
@@ -49,7 +44,6 @@ describe Car do
 
   describe '#has_inventory?' do
     it 'returns false when the dealership has no cars' do
-
       expect(@dealership.has_inventory?).to be false
     end
 
