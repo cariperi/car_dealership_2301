@@ -1,9 +1,9 @@
 class Dealership
-  attr_reader :name, :address, :inventory
+  attr_reader :name, :address, :inventory #don't actually needs address and name here! if you just use @var
 
   def initialize(name, address)
-    @name = name
-    @address = address
+    @name = name #don't need to add to attr_reader until it shows up in int pattern
+    @address = address #don't need to add to attr_reader until it shows up in int pattern
     @inventory = []
   end
 
@@ -16,7 +16,7 @@ class Dealership
   end
 
   def has_inventory?
-    @inventory.count >= 1
+    @inventory.count >= 1  #could do inventory_count > 0
   end
 
   def cars_by_make(make)
@@ -24,7 +24,7 @@ class Dealership
   end
 
   def total_value
-    @inventory.map { |car| car.total_cost }.sum
+    @inventory.map { |car| car.total_cost }.sum #can use ".sum" enumerable alone on @inventory!
   end
 
   def details

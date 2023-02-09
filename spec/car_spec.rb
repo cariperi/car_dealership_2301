@@ -44,7 +44,7 @@ RSpec.describe Car do
     expect(car.color).to be nil
   end
 
-  it 'can change color to a specified color' do
+  it 'can change color to a specified color' do #make this more explicit to the method:  'paints the car'
     car = Car.new("Ford Mustang", 1500, 36)
     car.paint!(:blue)
 

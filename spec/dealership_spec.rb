@@ -29,20 +29,24 @@ describe Car do
   describe '#inventory_count' do
     it 'returns the total number of cars in the inventory' do
       expect(@dealership.inventory_count).to eq(0)
+      #should add a test for the count increasing with adding a car here!
+      #add cars
+      #assert inventory count has increased
     end
   end
 
-  describe '#add_car' do
-    it 'adds a specified car to the cars inventory array' do
+  describe '#add_car' do #since the pattern has multiple cars, should be calling this multiple times here
+    it 'adds a specified car to the cars inventory array' do #simplify to 'adds cars to the inventory'
       car_1 = Car.new("Ford Mustang", 1500, 36)
       @dealership.add_car(car_1)
 
-      expect(@dealership.inventory_count).to eq(1)
+      expect(@dealership.inventory_count).to eq(1) #move this up to the inventory_count test
       expect(@dealership.inventory).to include(car_1)
     end
   end
 
-  describe '#has_inventory?' do
+  describe '#has_inventory?' do #could group all of these together - create new cars at setup,
+                                  #then run expects for no cars and 1 car, then add cars (personal pref!)
     it 'returns false when the dealership has no cars' do
       expect(@dealership.has_inventory?).to be false
     end
@@ -79,7 +83,7 @@ describe Car do
       @dealership.add_car(car_3)
       @dealership.add_car(car_4)
 
-      expect(@dealership.cars_by_make("Toyota")).to include(car_2, car_3)
+      expect(@dealership.cars_by_make("Toyota")).to include(car_2, car_3) #to eq([car_2, car_3])
       expect(@dealership.cars_by_make("Toyota").count).to eq(2)
     end
 
